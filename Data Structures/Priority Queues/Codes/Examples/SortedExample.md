@@ -1,41 +1,24 @@
-# Example Class
-this class will be used to visualize how to work around with this kind of data structure
+## Read a full explaination _[Here.](/Data%20Structures/Priority%20Queues/Codes/Examples/SortedExample-Explain.md)_
 
-## UnsortedPriorityQueue Class
-
-### the class definition
 ```py
-class UnsortedPriorityQueue():
+class SortedPriorityQueue():
   """A min-oriented priority queue implemented with an unsorted list."""
-```
 
-### internal class
-```py
+
   class _Item:
     __slots__ = '_key', '_value'
-```
-```__slots__``` is a special variable that creates a "template"
-```py
+
     def __init__(self, k, v):
       self._key = k
       self._value = v
-```
-initialize this internal class to be able to parse 2 stuff: "key" and "value" with the use of the "template"
-```py
+
     def __lt__(self, other):
       return self._key < other._key    # compare items based on their keys
-```
-a function for internal class. use for making comparison between the current item and other item
-```py
+
     def __str__(self):
       return '{}:{}'.format(self._key, self._value)
-```
-another function use for make a text string
-Summary:
-"Item" class is an internal class. intended for using inside **UnsortedPriorityQueue** class. (this must be remain untouched from test cases or users)
 
-### the actual class
-```py
+
   def __init__(self):
     self._data = []
 
@@ -53,7 +36,12 @@ Summary:
 
 
   def add(self, key, value):
-    self._data.append(self._Item(key, value))
+    newest = self._Item(key, value)
+
+    j = len(self._data) - 1
+    while j >= 0 and newest < self._data[j]:
+      j -= 1
+    self._data.insert(j+1, newest)
 
 
   def min(self):
@@ -61,10 +49,6 @@ Summary:
       raise Exception('Priority queue is empty')
 
     smallest = self._data[0]
-
-    for item in self._data:
-      if item < smallest:
-        smallest = item
 
     return smallest._key, smallest._value
 
@@ -75,18 +59,14 @@ Summary:
 
     smallest = self._data[0]
 
-    for item in self._data:
-      if item < smallest:
-        smallest = item
-
     self._data.remove(smallest)
     return smallest._key, smallest._value
-```
 
-## Test Cases
-```py
+
+
+
 if __name__ == '__main__':
-  pq = UnsortedPriorityQueue()
+  pq = SortedPriorityQueue()
   pq.add(2, 'two')
   pq.add(1, 'one')
   pq.add(4, 'four')
@@ -95,4 +75,3 @@ if __name__ == '__main__':
   print(pq.min())
   print(pq.remove_min())
 ```
-when this script runs this will run the class's methods and properties

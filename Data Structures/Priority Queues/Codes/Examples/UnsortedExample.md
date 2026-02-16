@@ -1,3 +1,5 @@
+## Read a full explaination _[Here.](/Data%20Structures/Priority%20Queues/Codes/Examples/UnsortedExample-Explain.md)_
+
 ```py
 class UnsortedPriorityQueue():
   """A min-oriented priority queue implemented with an unsorted list."""
@@ -11,7 +13,7 @@ class UnsortedPriorityQueue():
       self._value = v
 
     def __lt__(self, other):
-      return self._key < other._key    # compare items based on their keys
+      return self._key < other._key
 
     def __str__(self):
       return '{}:{}'.format(self._key, self._value)
