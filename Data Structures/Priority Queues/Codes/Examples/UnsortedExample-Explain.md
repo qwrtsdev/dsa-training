@@ -96,7 +96,7 @@ If the current "key" is smaller than ``smallest`` variable's key. Then we reassi
 
 This will be looping until we out of items in the array (in Python it's called "List" which is the same is array) and then we'll found out which one has the smallest key and return to the place this method was called with ``smallest``'s key and value.
 
-This way it looks simple. but it takes a lot of time and resources. That's the reason why this takes time complexity as O(n). The more of items in the array, the longer it takes.
+This way it does looks simple. but it takes a lot of time and resources. That's the reason why this takes time complexity as O(n). The more of items in the array, the longer it takes.
 ```py
   def remove_min(self):
     if self.is_empty():
