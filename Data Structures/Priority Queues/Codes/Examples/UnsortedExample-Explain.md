@@ -20,7 +20,7 @@ class UnsortedPriorityQueue():
 ```
 ```__slots__``` is a special variable that creates a "template". Used for restricts what attributes you are allowed to create in the class. This variable is using along with the ``__init__`` method.
 
-**Note** : This kind of stuff (the methods/properties that has double underscores at the beginning and the end) is something called **"dunders"**. It's a special methods/properties that includes in classes (even we're not seeing them)
+**Note** : This kind of stuff (the methods/properties that has double underscores at the beginning and the end) is something called **"dunders"**. It's a special methods/properties that includes in any classes (even we're not seeing them)
 
 It's not actively working but it'll be invoked in some actions such as when using ``+`` operator it'll invoke the method name ``__add__``. And the special part is we can create a method/property in the same name it will overwrite how it's work just like we did to these methods below
 ```py
