@@ -58,7 +58,7 @@ When we created this class. It'll transform itself into an array.
   def __str__(self):
     return '[' + ''.join([str(item) + ', ' for item in self._data]) + ']'
 ```
-When we using ``print(UnsortedPriorityQueue)`` it returns ``[{Key1:Value1}, [{Key2:Value2}, [{Key3:Value3}]``
+We're overwrite the ``__str__`` dunder of the actual class. When we using ``print(UnsortedPriorityQueue)`` it'll returns ``[{Key1:Value1}, [{Key2:Value2}, [{Key3:Value3}]``
 ```py
   def __len__(self):
     return len(self._data)
