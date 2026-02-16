@@ -42,7 +42,7 @@ And this will rewrite it's behavior to make a comparison of ``key`` when we're u
     def __str__(self):
       return '{}:{}'.format(self._key, self._value)
 ```
-``__str__`` is a another dunder for this internal class (named ``_Item``). This will be invoked when using ``print(_Item)``
+``__str__`` is a another dunder (of method) for this internal class (named ``_Item``). This will be invoked when using ``print(_Item)``
 
 This will returns a string that goes like this: ``Key:Value`` (Both ``{}`` is made for replacement when using ``.format()`` method. It'll insert itself.)
 
@@ -52,6 +52,8 @@ This will returns a string that goes like this: ``Key:Value`` (Both ``{}`` is ma
     self._data = []
 ```
 When we created this class. It'll transform itself into an array.
+
+**Note** : This ``self.data`` will be use as ``self`` argument from other methods from now on.
 ```py
   def __str__(self):
     return '[' + ''.join([str(item) + ', ' for item in self._data]) + ']'
@@ -69,8 +71,9 @@ When we using ``print(UnsortedPriorityQueue)`` it returns ``[{Key1:Value1}, [{Ke
 ```py
   def add(self, key, value):
     self._data.append(self._Item(key, value))
-
-
+```
+``add`` is user-created method that will add new data in the class's array with the use of internal ``_Item`` class (which uses the ``__slots__`` template)
+```py
   def min(self):
     if self.is_empty():
       raise Exception('Priority queue is empty')
@@ -82,8 +85,19 @@ When we using ``print(UnsortedPriorityQueue)`` it returns ``[{Key1:Value1}, [{Ke
         smallest = item
 
     return smallest._key, smallest._value
+```
+``min`` is user-created method that will firstly runs ``.is_empty`` method to check. If ``.is_empty`` returns ``True`` it'll raise an error that says ``Priority queue is empty``
 
+Then, it'll pick the first element in the array to be the starting point for a variable named ``smallest`` and iterates through the array and make a comparison between the current item it selected at the time with the variable named ``smallest``
 
+As you can see, each elements in the array is the class named ``_Item`` and we already overwrite the ``<`` behavior in ``__lt__`` dunder. so it'll use the current ``_Item`` class in the array with the ``_Item`` in the variable named ``smallest`` to make a comparison between keys
+
+If the current "key" is smaller than ``smallest`` variable's key. Then we reassign the ``smallest`` variable's value to be the same ``_Item`` class
+
+This will be looping until we out of items in the array (in Python it's called "List" which is the same is array) and then we'll found out which one has the smallest key and return to the place this method was called with ``smallest``'s key and value.
+
+This way it looks simple. but it takes a lot of time and resources. That's the reason why this takes time complexity as O(n). The more of items in the array, the longer it takes.
+```py
   def remove_min(self):
     if self.is_empty():
       raise Exception('Priority queue is empty')
@@ -97,6 +111,7 @@ When we using ``print(UnsortedPriorityQueue)`` it returns ``[{Key1:Value1}, [{Ke
     self._data.remove(smallest)
     return smallest._key, smallest._value
 ```
+same as the previous method but this also remove the smallest item.
 
 ## Test Cases (This is outside the class)
 ```py
@@ -110,4 +125,4 @@ if __name__ == '__main__':
   print(pq.min())
   print(pq.remove_min())
 ```
-**Note** : The ``if __name__ == '__main__'`` is a common thing use in Python. When we run this python file, this script will be run which running the methods from the classes
+**Note** : The ``if __name__ == '__main__'`` is a common thing use in Python. When we run this python file, this script will be run which also running the methods from the classes
