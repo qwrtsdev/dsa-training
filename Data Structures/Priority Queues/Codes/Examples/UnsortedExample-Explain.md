@@ -37,7 +37,7 @@ If not, it's will throw an error.
 ```
 ``__lt__`` is another dunder (of method) for this internal class (named ``_Item``). use for making comparison between the current item and other item.
 
-And this will rewrite it's behavior to make a comparison of ``key`` when we're using ``<`` operator
+And this will rewrite it's behavior to make a comparison of ``key`` rather than the whole thing when we're using ``<`` operator to it
 ```py
     def __str__(self):
       return '{}:{}'.format(self._key, self._value)
