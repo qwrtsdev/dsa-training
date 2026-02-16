@@ -23,7 +23,7 @@
 
 ### Image reference
 ![image.png](/Assets/bigo-comparison-priority-queue.png)
-<sup>a comparison of Time Complexity between "unsorted" and "sorted" in implementations. finding and insertion is quite opposite</sup>
+<br/><sup>a comparison of Time Complexity between "unsorted" and "sorted" in implementations. finding and insertion is quite opposite</sup>
 
 ## Heaps
 - This data structure allows both _insertions_ and _deletions_ in **logarithmic time** (time complexity = O(log n)) (Improved from previous stucture. Which was very fast!)
