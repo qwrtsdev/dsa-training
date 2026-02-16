@@ -88,7 +88,7 @@ When we using ``print(UnsortedPriorityQueue)`` it returns ``[{Key1:Value1}, [{Ke
 ```
 ``min`` is user-created method that will firstly runs ``.is_empty`` method to check. If ``.is_empty`` returns ``True`` it'll raise an error that says ``Priority queue is empty``
 
-Then, it'll pick the first element in the array to be the starting point for a variable named ``smallest`` and iterates through the array and make a comparison between the current item it selected at the time with the variable named ``smallest``
+If not, it'll pick the first element in the array to be the starting point for a variable named ``smallest`` and iterates through the array and make a comparison between the current item it selected at the time with the variable named ``smallest``
 
 As you can see, each elements in the array is the class named ``_Item`` and we already overwrite the ``<`` behavior in ``__lt__`` dunder. so it'll use the current ``_Item`` class in the array with the ``_Item`` in the variable named ``smallest`` to make a comparison between keys
 
